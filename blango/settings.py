@@ -75,6 +75,7 @@ class Dev(Configuration):
         "allauth.socialaccount.providers.google",
         "rest_framework",
         "rest_framework.authtoken",
+        "drf_yasg",
     ]
 
     MIDDLEWARE = [
@@ -87,6 +88,13 @@ class Dev(Configuration):
         'django.contrib.messages.middleware.MessageMiddleware',
         #'django.middleware.clickjacking.XFrameOptionsMiddleware',
     ]
+
+    SWAGGER_SETTINGS = {
+        "SECURITY_DEFINITIONS": {
+            "Token": {"type": "apiKey", "name": "Authorization", "in": "header"},
+            "Basic": {"type": "basic"},
+        }
+    }
 
     SITE_ID = 1
 
