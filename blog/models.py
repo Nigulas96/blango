@@ -6,6 +6,10 @@ from django.conf import settings
 
 # Create your models here.
 class Tag(models.Model):
+
+    class Meta:
+        ordering = ["value"]
+
     value = models.TextField(max_length=100, unique=True)
 
     def __str__(self):
@@ -32,6 +36,9 @@ class Comment(models.Model):
 
 
 class Post(models.Model):
+
+    
+
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
